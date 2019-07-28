@@ -1,0 +1,44 @@
+
+<div class="container">
+
+  <div class="mb-3" >
+    <a routerLink="/productList"  class="mx-3"> <i class="fas fa-arrow-alt-circle-left"></i>Go Back</a>
+
+    <a (click)="onSelect(product)" class="text-primary" style="cursor: pointer"> <i class="fas fa-sliders-h mx-1"></i>Edit</a>
+  </div>
+
+  <div class="card shadow">
+    <div class="row">
+      <div class="col-md-5">
+
+        <div class="card m-5" style="width: 18rem;">
+
+          <img class="card-img-top" alt="Card image cap"[src]="product.imageUrl">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row p-5">
+          <div class="col-md-6">
+            <p><strong>Name : </strong>{{product.productName}}</p>
+            <p><strong>Code : </strong>{{product.productCode}}</p>
+            <p><strong>Category: </strong>{{product.category}}</p>
+            <p><strong>Shipping Weight: </strong>{{product.shippingWeight}}</p>
+          </div>
+
+          <div class="col-md-6">
+            <p><strong>List Price: </strong>{{product.listPrice}}</p>
+            <p><strong>Our Price: </strong>{{product.ourPrice}}</p>
+            <p><strong> In Stock: </strong>{{product.active}}</p>
+          </div>
+          <div class="row">
+            <p><strong>Description: </strong>{{product.productDescription}}</p>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -3,16 +3,44 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { LoginComponent } from './components/login/login.component';
+import {DialogResultExampleDialog, ProductListComponent} from './components/product-list/product-list.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {ProductService} from './services/product.service';
+import {MatButtonModule, MatDialogModule} from '@angular/material';
+import { ViewProductComponent } from './components/view-product/view-product.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    LoginComponent,
+    ProductListComponent,
+    AddProductComponent,DialogResultExampleDialog, ViewProductComponent, EditProductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatDialogModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
