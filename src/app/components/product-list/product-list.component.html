@@ -8,9 +8,9 @@
         </th>
         <th>Product Name</th>
         <th>Category</th>
-        <th>List Price</th>
+        <th>Target Size</th>
         <th>Our Price</th>
-        <th>Active?</th>
+        <th>In Stock</th>
         <th>Operation</th>
       </tr>
       </thead>
@@ -22,9 +22,9 @@
         </td>
         <td><a (click)="onSelect(product)" style="cursor:pointer">{{product.productName}}</a></td>
         <td>{{product.category}}</td>
-        <td>{{product.listPrice}}</td>
-        <td>{{product.ourPrice}}</td>
-        <td>{{product.active}}</td>
+        <td>{{product.targetSize}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
         <td>
           <input hidden="hidden" name="id" />
           <button mat-button (click)="openDialog(product)" value="delete"><span class="fa fa-times"></span> delete</button>
@@ -33,5 +33,6 @@
       </tbody>
     </table>
   </div>
-  <button mat-raised-button class="mat-warn" id="deleteSelected" (click)="removeSelectedBooks()">Delete Selected</button>
+  <button mat-raised-button class="mat-warn mx-3" id="deleteSelected" (click)="removeSelectedBooks()">Delete Selected</button>
+  <a mat-raised-button class="btn btn-outline-info ml-atuo" routerLink="/addProduct">Add Product</a>
 </div>

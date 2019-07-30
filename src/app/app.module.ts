@@ -18,6 +18,9 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import { FooterComponent } from './components/footer/footer.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,13 @@ import {environment} from '../environments/environment';
     NavBarComponent,
     LoginComponent,
     ProductListComponent,
-    AddProductComponent,DialogResultExampleDialog, ViewProductComponent, EditProductComponent
+    AddProductComponent,
+    DialogResultExampleDialog,
+    ViewProductComponent,
+    EditProductComponent,
+    FooterComponent,
+    LogoutComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +49,9 @@ import {environment} from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase)
   ],
 
+  entryComponents:[
+    DialogResultExampleDialog
+  ],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })

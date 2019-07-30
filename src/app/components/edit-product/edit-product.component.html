@@ -1,83 +1,111 @@
-<div class="container">
-  <div class="card shadow mt-5">
-    <div [hidden]="productUpdate">
-      <h3 class="text-center  mt-5">
-        New Product Information <span style="font-size:small">* is a required field</span>
-      </h3>
-      <hr>
-      <form class="p-5" (ngSubmit)="onSubmit()">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="title">* Product Name</label>
-            <input type="text" required
-                   class="form-control" id="title"
-                   required [(ngModel)]="product.productName"
-                   name="title" >
-          </div>
-          <div class="form-group col-md-6">
-            <label for="author">* Product Code</label>
-            <input type="text" class="form-control"
-                   id="author" required name="author"
-                   [(ngModel)]="product.productCode">
-          </div>
-        </div>
-        <div class="form-row">
+<div >
+  <div [hidden]="productUpdate">  <!-- product form-->
 
-          <div class="form-group col-md-6">
-            <label for="publisher">* Shipping Weight</label>
-            <input type="number" class="form-control"
-                   name="publisher" id="publisher"
-                   [(ngModel)]="product.shippingWeight">
-          </div>
-
-          <div class="form-group col-md-6">
-            <label for="category">* Category</label>
-            <select id="category"name="category" class="form-control" [(ngModel)]="product.category">
-              <option selected>Choose...</option>
-              <option value="Management">Management</option>
-              <option value="Fiction">Fiction</option>
-              <option value="Engineering">Engineering</option>
-              <option value="Programming">Programming</option>
-              <option value="Arts &amp; Literature">Arts &amp; Literature</option>
-            </select>
+    <h3 class="text-center  mt-5">
+      Product Information <span style="font-size:small">* is a required field</span>
+    </h3>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="p-2">
+            <img class="custom-image " [src]="product.imageUrl" alt="">
           </div>
 
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="listPrice">* List Price</label>
-            <input type="number" class="form-control"
-                   id="listPrice" name="listPrice"
-                   [(ngModel)]="product.listPrice">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="ourPrice">* Our Price</label>
-            <input type="number" class="form-control"
-                   id="ourPrice" name="ourPrice"
-                   [(ngModel)]="product.ourPrice">
-          </div>
-        </div>
-        <div class="form-group ">
-          <label for="description">* Description</label>
-          <textarea id="description" name="description"
-                    class="form-control" [(ngModel)]="product.productDescription"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="image" class="mx-3">* Upload Image</label>
-          <input type="file" id="image" name="image">
-        </div>
+      </div>
+      <div class="col-md-6">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="productName" >* Product Name</label>
+              <input type="text"
+                     [(ngModel)]="product.productName"
+                     name="productName" id="productName"
+                     #productName="ngModel"
+                     [class.is-invalid]="productName.touched && productName.invalid"
+                     class="form-control"
+                     required>
+              <div *ngIf="productName.touched && productName.invalid">
+                Product Name Can not Be Empty!
+              </div>
 
-        <hr>
-        <button type="submit" class="btn btn-outline-success mx-3">Add Product</button>
-        <button type="cancel" class="btn btn-outline-danger">Cancel</button>
-      </form>
-    </div>
+            </div>
+            <div class="form-group col-md-6 " style="margin-top: 30px;">
 
+              <input style="display: none"
+                     type="file" #fileInput
+                     (change)="handleFileInput($event.target.files[0])">
+              <a mat-raised-button   (click)="fileInput.click()"
+                 class="btn btn-secondary btn-sm mx-2 uploadImage">Pick Product Image</a>
+            </div>
+
+          </div>
+          <div class="form-row">
+
+            <div class="form-group col-md-6">
+              <label for="quantity">* Quantity</label>
+              <input type="number" class="form-control"
+                     name="quantity" id="quantity"
+                     [(ngModel)]="product.quantity" #quantity="ngModel"
+                     required [class.is-invalid]="quantity.touched&&quantity.invalid">
+              <div *ngIf="quantity.touched && quantity.invalid">
+                Product Quantity Can not Be Empty!
+              </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="category">* Category</label>
+              <select id="category"name="category" class="form-control" [(ngModel)]="product.category" >
+                <option selected>Choose...</option>
+                <option *ngFor=" let cat of categories"  value="{{cat.name}}">{{cat.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="size">* Size</label>
+              <select id="size"name="size" class="form-control" [(ngModel)]="product.targetSize">
+                <option selected>Choose...</option>
+                <option *ngFor=" let size of targetSize" value="{{size.size}}">{{size.size}}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="price">* Price $</label>
+              <input type="number" class="form-control"
+                     id="price" required
+                     name="productPrice"
+                     #productPrice="ngModel"
+                     [(ngModel)]="product.price"
+                     [class.is-invalid]="productPrice.touched && productPrice.invalid"
+              >
+              <div *ngIf="productPrice.touched && productPrice.invalid">
+                Product Price Can not Be Empty!
+              </div>
+            </div>
+
+
+          </div>
+          <div class="form-group ">
+            <label for="description">* Description</label>
+            <textarea id="description" name="description"
+                      class="form-control" [(ngModel)]="product.description" ></textarea>
+          </div>
+          <div class="form-group">
+
+          </div>
+
+          <hr>
+          <button mat-raised-button type="submit" class="btn btn-outline-success mx-3">Add Product</button>
+          <button mat-button type="cancel" class="btn btn-outline-danger">Cancel</button>
+        </form>
+      </div>
+    </div><!-- product form-->
   </div>
   <div class="row" [hidden]="!productUpdate">
     <h3 class="text-center text-success">Created new Product successfully!</h3>
+    <button mat-raised-button class=" btn btn-info" routerLink="/productList">Go List</button>
   </div>
-
-  {{product|json}}
-
-</div>
+  <!-- product form card-->
+</div><!-- container-->

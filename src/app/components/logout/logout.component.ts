@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../../services/login.service';
 
 @Component({
-  selector: 'nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  selector: 'app-logout',
+  templateUrl: './logout.component.html',
+  styleUrls: ['./logout.component.css']
 })
-export class NavBarComponent implements OnInit {
-
+export class LogoutComponent implements OnInit {
 
   constructor(private loginService:LoginService) { }
 
   ngOnInit() {
+    this.loginService.logout()
   }
+
+
 
 }

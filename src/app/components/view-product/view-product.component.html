@@ -18,20 +18,22 @@
       </div>
       <div class="col-md-7">
         <div class="row p-5">
-          <div class="col-md-6">
-            <p><strong>Name : </strong>{{product.productName}}</p>
-            <p><strong>Code : </strong>{{product.productCode}}</p>
-            <p><strong>Category: </strong>{{product.category}}</p>
-            <p><strong>Shipping Weight: </strong>{{product.shippingWeight}}</p>
-          </div>
 
           <div class="col-md-6">
-            <p><strong>List Price: </strong>{{product.listPrice}}</p>
-            <p><strong>Our Price: </strong>{{product.ourPrice}}</p>
-            <p><strong> In Stock: </strong>{{product.active}}</p>
+            <p class="text-center text-muted "> <strong>Product Detail Information</strong></p>
+            <p><strong>Name : </strong>{{product.productName}}</p>
+            <p><strong>Price : </strong>{{ product.price | currency:'MMK '}}</p>
+            <p><strong>Category: </strong>{{product.category}}</p>
+          </div>
+
+          <div class="col-md-6 mt-5">
+            <p><strong>Size: </strong>{{product.targetSize}}</p>
+            <p><strong> In Stock: </strong>{{product.quantity}}</p>
           </div>
           <div class="row">
-            <p><strong>Description: </strong>{{product.productDescription}}</p>
+            <p><strong>Description: </strong>
+              <br>
+              {{product.description}}</p>
           </div>
 
         </div>
