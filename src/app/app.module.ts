@@ -21,6 +21,7 @@ import {environment} from '../environments/environment';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { UserOrderComponent } from './components/user-order/user-order.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     FooterComponent,
     LogoutComponent,
     WelcomeComponent,
+    UserOrderComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import {EditProductComponent} from './components/edit-product/edit-product.compo
 import {LoginComponent} from './components/login/login.component';
 import {WelcomeComponent} from './components/welcome/welcome.component';
 import {LogoutComponent} from './components/logout/logout.component';
+import { UserOrderComponent } from './components/user-order/user-order.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,9 @@ const routes: Routes = [
   {path:'viewProduct/:id',component:ViewProductComponent},
   {path:'editProduct/:id',component:EditProductComponent},
   {path:'logout',component:LogoutComponent},
+  {
+    path: 'orders', component: UserOrderComponent
+  }
 ];
 
 @NgModule({

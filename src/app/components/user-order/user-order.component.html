@@ -1,0 +1,27 @@
+{{orders | json}}
+
+<div class="container">
+    <div class="table-responsive" style="margin-top: 30px;">
+      <table id="bookListTable" class="table bordered highlight">
+        <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Target Size</th>
+          <th>Our Price</th>
+          <th>In Stock</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor = "let order of orders">
+          <!-- <td>{{product.productName}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.targetSize}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td> -->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
