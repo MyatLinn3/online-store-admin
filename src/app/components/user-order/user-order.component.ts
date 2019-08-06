@@ -10,7 +10,6 @@ import { OrderDto } from 'src/app/models/order-model-dto';
 export class UserOrderComponent implements OnInit {
 
   orders: OrderDto[] = [];
-  total: number = 0;
   quantity: number = 0;
 
   constructor(private orderService: OrderService) { }
@@ -22,13 +21,14 @@ export class UserOrderComponent implements OnInit {
   }
 
   getTotal(order: OrderDto): number {
+    let total: number = 0;
     order.products.forEach(product => {
-      this.total += product.price;
+      total += product.price;
     })
-    return this.total;
+    return total;
   }
 
   getproducts() {
-    
+
   }
 }
