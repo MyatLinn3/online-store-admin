@@ -5,5 +5,6 @@ export  class OrderDto {
 
   public products:Product[]=[];
   public shippingAddress:ShippingAddress;
+  public date: string = new Date().toISOString();
 
 }

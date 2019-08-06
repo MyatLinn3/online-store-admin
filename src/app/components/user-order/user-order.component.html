@@ -1,27 +1,36 @@
 {{orders | json}}
 
 <div class="container">
-    <div class="table-responsive" style="margin-top: 30px;">
-      <table id="bookListTable" class="table bordered highlight">
-        <thead>
+  <div class="table-responsive" style="margin-top: 30px;">
+    <table id="bookListTable" class="table bordered highlight">
+      <thead>
         <tr>
-          <th>Product Name</th>
-          <th>Category</th>
-          <th>Target Size</th>
-          <th>Our Price</th>
-          <th>In Stock</th>
+          <th>Id</th>
+          <th>Products</th>
+          <th>Customer Name</th>
+          <th>Address</th>
+          <th>Total</th>
         </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor = "let order of orders">
-          <!-- <td>{{product.productName}}</td>
-          <td>{{product.category}}</td>
-          <td>{{product.targetSize}}</td>
-          <td>{{product.price}}</td>
-          <td>{{product.quantity}}</td> -->
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{order.orderId}}</td>
+          <td>
+            <span *ngFor="let product of order.products | simpProds">
+              <span *ngFor="let pro of product">
+                {{pro}}
+              </span>
+            </span>
+          </td>
+          <td>{{order.shippingAddress.firstName}} {{order.shippingAddress.lastName}}</td>
+          <td>
+            {{order.shippingAddress | fulladdress}}
+          </td>
+          <td>
+            {{ getTotal(order) }}
+          </td>
         </tr>
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </div>
-  
+</div>

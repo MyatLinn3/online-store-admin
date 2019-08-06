@@ -22,6 +22,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { UserOrderComponent } from './components/user-order/user-order.component';
+import { MonthlySaleComponent } from './components/monthly-sale/monthly-sale.component';
+import { FulladdressPipe } from './pipes/fulladdress.pipe';
+import { SimpProdsPipe } from './pipes/simp-prods.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { UserOrderComponent } from './components/user-order/user-order.component
     LogoutComponent,
     WelcomeComponent,
     UserOrderComponent,
+    MonthlySaleComponent,
+    FulladdressPipe,
+    SimpProdsPipe,
   ],
   imports: [
     BrowserModule,
