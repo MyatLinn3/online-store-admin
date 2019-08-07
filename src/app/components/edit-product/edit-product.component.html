@@ -25,7 +25,8 @@
                      #productName="ngModel"
                      [class.is-invalid]="productName.touched && productName.invalid"
                      class="form-control"
-                     required>
+                     required 
+                     >
               <div *ngIf="productName.touched && productName.invalid">
                 Product Name Can not Be Empty!
               </div>

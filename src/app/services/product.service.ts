@@ -40,7 +40,7 @@ export class ProductService {
 
 
       getProduct(productId){
-        let url="http://localhost:8080/api/product/" + productId;
+        let url="http://localhost:8080/api/product/get/" + productId;
         let header=new HttpHeaders({
           'Content-Type':'application/json'
 

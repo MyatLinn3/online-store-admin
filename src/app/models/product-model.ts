@@ -9,4 +9,5 @@ export class Product {
   public category:string;
   public targetSize:string;
   public imageUrl:string;
+  public date: string = new Date().toISOString();
 }

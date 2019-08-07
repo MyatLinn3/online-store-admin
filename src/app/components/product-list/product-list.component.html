@@ -6,12 +6,14 @@
         <th>
           <input type="checkbox" (change)="updateSelected($event.target.checked)" />
         </th>
+        <th>Creation Date</th>
         <th>Product Name</th>
         <th>Category</th>
         <th>Target Size</th>
         <th>Our Price</th>
         <th>In Stock</th>
         <th>Operation</th>
+        <th>Available</th>
       </tr>
       </thead>
       <tbody>
@@ -20,14 +22,22 @@
           <input hidden="hidden" name="id" />
           <input type="checkbox" [checked]="allChecked" (change)="updateRemoveBookList($event.target.checked, product)" />
         </td>
+        <td>{{product.date}}</td>
         <td><a (click)="onSelect(product)" style="cursor:pointer">{{product.productName}}</a></td>
         <td>{{product.category}}</td>
         <td>{{product.targetSize}}</td>
         <td>{{product.price}}</td>
         <td>{{product.quantity}}</td>
+        
         <td>
           <input hidden="hidden" name="id" />
           <button mat-button (click)="openDialog(product)" value="delete"><span class="fa fa-times"></span> delete</button>
+        </td>
+        <td>
+          <div *ngIf="product.quantity !== 0; else yes"><p style="background-color: green" class="text-center">Yes</p></div>
+          <ng-template #yes >
+            <p style="background-color: red" class="text-center">Out Of Stock</p>  
+          </ng-template>
         </td>
       </tr>
       </tbody>

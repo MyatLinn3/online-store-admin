@@ -16,6 +16,7 @@ export class UserOrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderService.findAllOrders().subscribe((orders: any[]) => {
+      console.log(orders);
       this.orders = orders;
     });
   }

@@ -1,4 +1,4 @@
-{{orders | json}}
+
 
 <div class="container">
   <div class="table-responsive" style="margin-top: 30px;">
@@ -9,6 +9,7 @@
           <th>Products</th>
           <th>Customer Name</th>
           <th>Address</th>
+          <th>Phone</th>
           <th>Total</th>
         </tr>
       </thead>
@@ -24,7 +25,10 @@
           </td>
           <td>{{order.shippingAddress.firstName}} {{order.shippingAddress.lastName}}</td>
           <td>
-            {{order.shippingAddress | fulladdress}}
+            {{order.shippingAddress.city}} , {{order.shippingAddress.township}} , {{order.shippingAddress.streetAddress}}
+          </td> 
+          <td>
+            {{order.shippingAddress.confirmEmail}}
           </td>
           <td>
             {{ getTotal(order) }}
