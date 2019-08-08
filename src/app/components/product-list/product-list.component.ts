@@ -68,7 +68,7 @@ export class ProductListComponent implements OnInit ,DoCheck{
               this.productService.deleteProduct(book.id).subscribe(
                 res => {
                   console.log(res);
-                  this.getProducts();
+                  this.ngOnInit();
                 },
                 err => {
                   console.log(err)
@@ -103,7 +103,7 @@ export class ProductListComponent implements OnInit ,DoCheck{
       }
 
       ngDoCheck(){
-         //this.getProducts()
+         this.getProducts()
       }
 
 

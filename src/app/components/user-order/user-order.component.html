@@ -11,11 +11,12 @@
           <th>Address</th>
           <th>Phone</th>
           <th>Total</th>
+          <th>Operation</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orders">
-          <td>{{order.orderId}}</td>
+        <tr *ngFor="let order of orders;let i = index">
+          <td>{{i + 1}}</td>
           <td>
             <span *ngFor="let product of order.products | simpProds">
               <span *ngFor="let pro of product">
@@ -33,6 +34,7 @@
           <td>
             {{ getTotal(order) }}
           </td>
+          <td><a (click)="delete(order)" class="btn btn-outline-danger" mat-raised-button>Delete</a></td>
         </tr>
       </tbody>
     </table>
