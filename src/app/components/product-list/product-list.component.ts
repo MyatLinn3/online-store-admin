@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit ,DoCheck{
+export class ProductListComponent implements OnInit{
 
       private selectedProduct:Product;
       private checked:boolean;
@@ -102,9 +102,9 @@ export class ProductListComponent implements OnInit ,DoCheck{
 
       }
 
-      ngDoCheck(){
-         this.getProducts()
-      }
+      // ngDoCheck(){
+      //    this.getProducts()
+      // }
 
 
 
