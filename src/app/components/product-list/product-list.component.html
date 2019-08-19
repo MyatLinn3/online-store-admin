@@ -22,7 +22,7 @@
           <input hidden="hidden" name="id" />
           <input type="checkbox" [checked]="allChecked" (change)="updateRemoveBookList($event.target.checked, product)" />
         </td>
-        <td>{{product.date}}</td>
+        <td>{{product.date| date:'mediumDate'}}</td>
         <td><a>{{product.productName}}</a></td>
         <td>{{product.category}}</td>
         <td>{{product.targetSize}}</td>
@@ -30,9 +30,10 @@
         <td>{{product.quantity}}</td>
         
         <td>
+          
           <input hidden="hidden" name="id" />
-          <button mat-button (click)="openDialog(product)" value="delete"><span class="fa fa-times"></span> delete</button>
-          <button mat-button (click)="onSelect(product)" value="edit"><span class="fa fa-times"></span> edit</button>
+          <button mat-button class="btn btn-danger btn-sm" (click)="openDialog(product)" value="delete"><span class="fa fa-times"></span> delete</button>
+          <button mat-button class="btn btn-warning btn-sm"(click)="onSelect(product)" value="edit"><span class="fa fa-times"></span> edit</button>
         </td>
         <td>
           <div *ngIf="product.quantity !== 0; else yes"><p style="background-color: green" class="text-center">Yes</p></div>
