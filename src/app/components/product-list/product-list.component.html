@@ -27,18 +27,18 @@
         <td>{{product.category}}</td>
         <td>{{product.targetSize}}</td>
         <td>{{product.price}}</td>
-        <td>{{product.totalQuantity}}</td>
-        
+        <td>{{product.availableQuantity}}</td>
+
         <td>
-          
+
           <input hidden="hidden" name="id" />
           <button mat-button class="btn btn-danger btn-sm" (click)="openDialog(product)" value="delete"> Delete</button>
           <button mat-button class="btn btn-warning btn-sm"(click)="onSelect(product)" value="edit"> Edit</button>
         </td>
         <td>
-          <div *ngIf="product.quantity !== 0; else yes"><p style="background-color: green" class="text-center">Yes</p></div>
+          <div *ngIf="product.availableQuantity !== 0; else yes"><p style="background-color: green" class="text-center">Yes</p></div>
           <ng-template #yes >
-            <p style="background-color: red" class="text-center">Out Of Stock</p>  
+            <p style="background-color: red" class="text-center">Out Of Stock</p>
           </ng-template>
         </td>
       </tr>
