@@ -43,8 +43,8 @@
                     <div class="form-group col-md-6">
                       <label for="quantity">* Quantity</label>
                       <input type="number" class="form-control"
-                             name="quantity" id="quantity"
-                             [(ngModel)]="newProduct.quantity" #quantity="ngModel"
+                             name="totalQuantity" id="quantity"
+                             [(ngModel)]="newProduct.totalQuantity" #quantity="ngModel"
                             required [class.is-invalid]="quantity.touched&&quantity.invalid">
                       <div *ngIf="quantity.touched && quantity.invalid">
                         Product Quantity Can not Be Empty!
