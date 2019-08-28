@@ -3,7 +3,6 @@ export class Product {
   public id: number;
   public productName: string;
   public price: number;
-  public totalQuantity: number;
   public availableQuantity: number;
   public isAvailable: boolean = true;
   public description: string;

@@ -19,7 +19,6 @@ export class AddProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private storage: AngularFireStorage
-
   ) { }
 
   ngOnInit() {

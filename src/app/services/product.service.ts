@@ -14,7 +14,6 @@ export class ProductService {
 
 
   newProduct(product: Product) {
-    product.availableQuantity = product.totalQuantity;
     let url = this.serverPath + "/api/product/add";
     let tokenHeader = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -34,7 +33,6 @@ export class ProductService {
     let header = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-
     return this.httpClient.post(url, bookId, { headers: header });
   }
 
@@ -43,19 +41,15 @@ export class ProductService {
     let url = "http://localhost:8080/api/product/get/" + productId;
     let header = new HttpHeaders({
       'Content-Type': 'application/json'
-
     });
     return this.httpClient.get(url, { headers: header });
   }
-
-
 
   editPrdouct(product: Product) {
     let url = "http://localhost:8080/api/product/update";
     let header = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-
     return this.httpClient.post(url, JSON.stringify(product), { headers: header });
   }
 }

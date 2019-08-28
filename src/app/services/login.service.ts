@@ -10,7 +10,6 @@ export class LoginService {
     console.log(email,password)
     if (email=="admin@gmail.com" && password=="admin"){
       sessionStorage.setItem('authenticateUser',email);
-
       return true;
     }else {
       return false;

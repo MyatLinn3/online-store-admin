@@ -29,7 +29,7 @@ export class UserOrderComponent implements OnInit {
     let total: number = 0;
     order.products.forEach(product => {
       total += product.price;
-    })
+    });
     return total;
   }
 
