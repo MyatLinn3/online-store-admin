@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
     this.productService.getProductList().subscribe(
       (data: any) => {
         console.log(data),
-        this.productList = data;
+          this.productList = data;
       },
 
       error => console.log(error)
@@ -81,22 +81,27 @@ export class ProductListComponent implements OnInit {
   }
 
   removeSelectedBooks() {
-    let dialog = this.dialog.open(DialogResultExampleDialog);
-    dialog.afterClosed().subscribe(
-      result => {
-        if (result == 'yes') {
-          for (let book of this.removeBookList) {
-            this.productService.deleteProduct(book.id).subscribe(
-              res => {
-                console.log(res);
-                this.getProducts();
-              },
-              err => {
-                console.log(err)
-              });
+    if (this.removeBookList.length > 0) {
+      let dialog = this.dialog.open(DialogResultExampleDialog);
+      dialog.afterClosed().subscribe(
+        result => {
+          if (result == 'yes') {
+            for (let book of this.removeBookList) {
+              this.productService.deleteProduct(book.id).subscribe(
+                res => {
+                  console.log(res);
+                  this.getProducts();
+                },
+                err => {
+                  console.log(err)
+                });
+            }
           }
-        }
-      });
+        });
+    } else {
+      let dialog = this.dialog.open(DialogErrorExampleDialog);
+    }
+ 
 
   }
 
@@ -115,4 +120,12 @@ export class ProductListComponent implements OnInit {
 })
 export class DialogResultExampleDialog {
   constructor(public dialogRef: MatDialogRef<DialogResultExampleDialog>) { }
+}
+
+@Component({
+  selector: 'dialog-error-example-dialog',
+  templateUrl: './dialog-error-example-dialog.html'
+})
+export class DialogErrorExampleDialog {
+  constructor(public dialogRef: MatDialogRef<DialogErrorExampleDialog>) { }
 }
