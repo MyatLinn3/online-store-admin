@@ -45,6 +45,6 @@
       </tbody>
     </table>
   </div>
-  <button mat-raised-button class="mat-warn mx-3" id="deleteSelected" (click)="removeSelectedBooks()">Delete Selected</button>
+  <button mat-raised-button class="mat-warn mx-3" id="deleteSelected" (click)="removeSelectedBooks()" [disabled]="check">Delete Selected</button>
   <a mat-raised-button class="btn btn-outline-info ml-atuo" routerLink="/addProduct">Add Product</a>
 </div>
