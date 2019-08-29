@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
       (data: any) => {
         console.log(data),
           this.productList = data;
-          this.check = this.productList.length > 0 ? false : true;
+        this.check = this.productList.length > 0 ? false : true;
       },
       console.log
     );
@@ -85,12 +85,7 @@ export class ProductListComponent implements OnInit {
       let dialog = this.dialog.open(DialogErrorExampleDialog);
     }
   }
-
-
-
-
 }
-
 
 @Component({
   selector: 'dialog-result-example-dialog',

@@ -2,49 +2,54 @@
   <div class="table-responsive" style="margin-top: 30px;">
     <table id="bookListTable" class="table bordered highlight">
       <thead>
-      <tr>
-        <th>
-          <input type="checkbox" (change)="updateSelected($event.target.checked)" />
-        </th>
-        <th>Creation Date</th>
-        <th>Product Name</th>
-        <th>Category</th>
-        <th>Target Size</th>
-        <th>Our Price</th>
-        <th>In Stock</th>
-        <th>Operation</th>
-        <th>Available</th>
-      </tr>
+        <tr>
+          <th>
+            <input type="checkbox" (change)="updateSelected($event.target.checked)" />
+          </th>
+          <th>Creation Date</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Target Size</th>
+          <th>Our Price</th>
+          <th>In Stock</th>
+          <th>Operation</th>
+          <th>Available</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor = "let product of productList">
-        <td>
-          <input hidden="hidden" name="id" />
-          <input type="checkbox" [checked]="allChecked" (change)="updateRemoveBookList($event.target.checked, product)" />
-        </td>
-        <td>{{product.date| date:'mediumDate'}}</td>
-        <td><a>{{product.productName}}</a></td>
-        <td>{{product.category}}</td>
-        <td>{{product.targetSize}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.availableQuantity}}</td>
+        <tr *ngFor="let product of productList">
+          <td>
+            <input hidden="hidden" name="id" />
+            <input type="checkbox" [checked]="allChecked"
+              (change)="updateRemoveBookList($event.target.checked, product)" />
+          </td>
+          <td>{{product.date| date:'mediumDate'}}</td>
+          <td><a>{{product.productName}}</a></td>
+          <td>{{product.category}}</td>
+          <td>{{product.targetSize}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.availableQuantity}}</td>
 
-        <td>
+          <td>
 
-          <input hidden="hidden" name="id" />
-          <button mat-button class="btn btn-danger btn-sm" (click)="openDialog(product)" value="delete"> Delete</button>
-          <button mat-button class="btn btn-warning btn-sm"(click)="onSelect(product)" value="edit"> Edit</button>
-        </td>
-        <td>
-          <div *ngIf="product.availableQuantity !== 0; else yes"><p style="background-color: green" class="text-center">Yes</p></div>
-          <ng-template #yes >
-            <p style="background-color: red" class="text-center">Out Of Stock</p>
-          </ng-template>
-        </td>
-      </tr>
+            <input hidden="hidden" name="id" />
+            <button mat-button class="btn btn-danger btn-sm" (click)="openDialog(product)" value="delete">
+              Delete</button>
+            <button mat-button class="btn btn-warning btn-sm" (click)="onSelect(product)" value="edit"> Edit</button>
+          </td>
+          <td>
+            <div *ngIf="product.availableQuantity !== 0; else yes">
+              <p style="background-color: green" class="text-center">Yes</p>
+            </div>
+            <ng-template #yes>
+              <p style="background-color: red" class="text-center">Out Of Stock</p>
+            </ng-template>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
-  <button mat-raised-button class="mat-warn mx-3" id="deleteSelected" (click)="removeSelectedBooks()" [disabled]="check">Delete Selected</button>
+  <button mat-raised-button class="mat-warn mx-3" id="deleteSelected" (click)="removeSelectedBooks()"
+    [disabled]="check">Delete Selected</button>
   <a mat-raised-button class="btn btn-outline-info ml-atuo" routerLink="/addProduct">Add Product</a>
 </div>
