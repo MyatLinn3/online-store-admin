@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onSubmit()" #f="ngForm" >
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="productName">* Product Name</label>
@@ -25,25 +25,26 @@
               </div>
             </div>
             <div class="form-group col-md-6 " style="margin-top: 30px;">
-
               <input style="display: none" type="file" #fileInput (change)="handleFileInput($event.target.files[0])">
               <a mat-raised-button (click)="fileInput.click()" class="btn btn-secondary btn-sm mx-2 uploadImage">Pick
                 Product Image</a>
             </div>
-
           </div>
           <div class="form-row">
-
             <div class="form-group col-md-6">
               <label for="quantity">* Quantity</label>
-              <input type="number" class="form-control" name="availableQuantity" id="quantity"
+              <input type="text" class="form-control" name="availableQuantity" id="quantity"
                 [(ngModel)]="newProduct.availableQuantity" #quantity="ngModel" required
-                [class.is-invalid]="quantity.touched&&quantity.invalid">
-              <div *ngIf="quantity.touched && quantity.invalid">
-                Product Quantity Can not Be Empty!
+                [class.is-invalid]="quantity.touched && quantity.invalid" pattern="\d*">
+              <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="alert alert-danger">
+                <div *ngIf="quantity.errors.required">
+                  Product Quantity Can not Be Empty!
+                </div>
+                <div *ngIf="quantity.errors.pattern">
+                  Product Quantity only be digits!
+                </div>
               </div>
             </div>
-
             <div class="form-group col-md-6">
               <label for="category">* Category</label>
               <select id="category" name="category" class="form-control" [(ngModel)]="newProduct.category">
@@ -63,27 +64,28 @@
             </div>
             <div class="form-group col-md-6">
               <label for="price">* Price MMK</label>
-              <input type="number" class="form-control" id="price" required name="productPrice" #productPrice="ngModel"
-                [(ngModel)]="newProduct.price" [class.is-invalid]="productPrice.touched && productPrice.invalid">
-              <div *ngIf="productPrice.touched && productPrice.invalid">
-                Product Price Can not Be Empty!
+              <input type="text" class="form-control" id="price" required name="productPrice" #productPrice="ngModel"
+                [(ngModel)]="newProduct.price" [class.is-invalid]="productPrice.touched && productPrice.invalid"
+                pattern="\d*">
+              <div *ngIf="productPrice.invalid && (productPrice.dirty || productPrice.touched)"
+                class="alert alert-danger">
+                <div *ngIf="productPrice.errors.required">
+                  Product Quantity Can not Be Empty!
+                </div>
+                <div *ngIf="productPrice.errors.pattern">
+                  Product Quantity only be digits!
+                </div>
               </div>
             </div>
-
-
           </div>
           <div class="form-group ">
             <label for="description">* Description</label>
             <textarea id="description" name="description" class="form-control"
               [(ngModel)]="newProduct.description"></textarea>
           </div>
-          <div class="form-group">
-
-          </div>
-
           <hr>
-          <button mat-raised-button type="submit" class="btn btn-outline-success mx-3">Add Product</button>
-          <button mat-button type="cancel" class="btn btn-outline-danger">Cancel</button>
+          <button mat-raised-button type="submit" class="btn btn-outline-success mx-3" [disabled]="f.invalid">Add Product</button>
+          <a mat-button type="cancel" class="btn btn-outline-danger" routerLink="/productList">Cancel</a>
         </form>
       </div>
     </div><!-- product form-->

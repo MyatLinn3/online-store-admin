@@ -17,11 +17,17 @@ export class DeleteService {
   }
 
   public getUserOrders() {
-    return JSON.parse(localStorage.getItem('orders'));
+    if (localStorage.getItem('orders'))
+      return JSON.parse(localStorage.getItem('orders'));
+    else
+      return [];
   }
 
   public getSaleHistorys() {
-    return JSON.parse(localStorage.getItem('sales'));;
+    if (localStorage.getItem('sales'))
+      return JSON.parse(localStorage.getItem('sales'));
+    else
+      return [];
   }
 
   public addUserOrder(order: OrderDto) {

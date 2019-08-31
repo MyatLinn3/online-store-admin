@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, DoCheck } from '@angular/core';
 import { Product } from '../../models/product-model';
 import { ProductService } from '../../services/product.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AppConstants } from '../../utils/app-constants';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
@@ -16,10 +17,13 @@ export class AddProductComponent implements OnInit {
   private productAdded: boolean;
   private categories: { name: string; id: number }[] = AppConstants.categories;
   private targetSize: { size: string; id: number }[] = AppConstants.targetSize;
+  @ViewChild('quantity', { static: true }) quantity: ElementRef;
+
   constructor(
     private productService: ProductService,
     private storage: AngularFireStorage
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
