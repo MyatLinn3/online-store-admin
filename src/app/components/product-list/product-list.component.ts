@@ -31,10 +31,10 @@ export class ProductListComponent implements OnInit {
     this.productService.getProductList().subscribe(
       (data: any) => {
         console.log(data),
-          this.productList = data;
+        this.productList = data;
+        this.productList = this.productList.sort((a,b) => new Date(b.date) - new Date(a.date) );
         this.check = this.productList.length > 0 ? false : true;
       },
-      console.log
     );
   }
 
