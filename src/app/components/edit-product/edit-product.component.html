@@ -46,8 +46,8 @@
             <div class="form-group col-md-6">
               <label for="quantity">* Quantity</label>
               <input type="number" class="form-control"
-                     name="totalQuantity" id="quantity"
-                     [(ngModel)]="product.totalQuantity" #quantity="ngModel"
+                     name="availableQuantity" id="quantity"
+                     [(ngModel)]="product.availableQuantity" #quantity="ngModel"
                      required [class.is-invalid]="quantity.touched&&quantity.invalid">
               <div *ngIf="quantity.touched && quantity.invalid">
                 Product Quantity Can not Be Empty!
