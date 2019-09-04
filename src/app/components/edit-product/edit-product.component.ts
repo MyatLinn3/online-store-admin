@@ -17,6 +17,7 @@ export class EditProductComponent implements OnInit {
   private productUpdate: boolean;
   private categories: { name: string; id: number }[] = AppConstants.categories;
   private targetSize: { size: string; id: number }[] = AppConstants.targetSize;
+  lastQuantity: number;
 
   constructor(private storage: AngularFireStorage,
     private route: ActivatedRoute,
@@ -30,15 +31,18 @@ export class EditProductComponent implements OnInit {
     this.getProductService.getProduct(this.productId).subscribe(
       (data: any) => {
         this.product = data
-        console.log(this.product)
+        console.log(this.product);
+        this.lastQuantity = this.product.availableQuantity;
+        this.product.availableQuantity = 0;
       },
       error => {
-        console.log(error)
+        console.log(error);
       }
     )
   }
 
   onSubmit() {
+    this.product.availableQuantity += this.lastQuantity;
     this.getProductService.editPrdouct(this.product).subscribe(
       data => {
         console.log(data)
